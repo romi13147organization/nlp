@@ -2,6 +2,8 @@ import pandas as pd
 from lxml import etree
 import matplotlib.pyplot as plt
 import numpy as np
+import re
+from unidecode import unidecode
 
 def read_xml(path_file):
     with open(path_file, 'r', encoding='utf-8') as file:
@@ -64,3 +66,19 @@ def plot_two(data, title, bins, xlabel, xlim):
     ax[1].set_title(title)
     ax[1].set_xlabel(xlabel)
     ax[1].set_xlim(0, xlim)
+
+def clean_description(text):
+    # Remove whitespace between .,;!?
+    text = re.sub(r'(\S)\s*(?=[.,;!?])', r'\1', text)
+    # Remove extra whitespace
+    text = re.sub(r'\s+', ' ', text).strip()
+    # Remove extra Punctuations
+    text = re.sub(r'\.{2,}', '.', text)
+    # Insert Whitespace after .,;!? if missing
+    text= re.sub(r'([.,;!?])(?=\S)', r'\1 ', text)
+    # Split concatenated words --> EasyTuesday -> Easy. Tuesday
+    text = re.sub(r'(?<=[a-z])(?=[A-Z])(?=[a-zA-Z])', '. ', text)
+    # replace special characters
+    text = unidecode(text)
+
+    return text
