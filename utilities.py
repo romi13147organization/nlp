@@ -99,7 +99,7 @@ def load_data_basiccleanup():
         # label will be the first match --> topic has a lower frequency of occurence
         for reduced_topic in reduced_topics_sorted:
             for t in topic_string:
-                if reduced_topic.lower() in t.lower():
+                if reduced_topic.lower() == t.lower():
                     return reduced_topic
         return 'Others'
     df['TOPIC_MAIN'] = df['TOPICS_SPLIT'].apply(assign_primary_topic)
