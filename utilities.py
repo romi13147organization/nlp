@@ -85,7 +85,7 @@ def clean_description(text):
     return text
 
 
-def load_data_basiccleanup():
+def load_data_basic_cleanup():
     # Load XML files and create dataframe
     PATH_DEV = os.path.join(os.getcwd(), 'origdata', 'BlurbGenreCollection_EN_dev.txt')
     PATH_TEST = os.path.join(os.getcwd(), 'origdata', 'BlurbGenreCollection_EN_test.txt')
@@ -96,7 +96,7 @@ def load_data_basiccleanup():
     reduced_topics_sorted = ['Poetry', 'Humor', 'Young Adult', 'Classics', 'Children’s Books', 'Fiction', 'Nonfiction']
     df['TOPICS_SPLIT'] = df['TOPICS'].apply(lambda x: sorted(list(set(i.strip() for i in re.split(r'[,\s]{2,}', x)))))
     def assign_primary_topic(topic_string):
-        # label will be the first match --> topic has a lower frequency of occurence
+        # label will be the first match --> topic has a lower frequency of occurrence
         for reduced_topic in reduced_topics_sorted:
             for t in topic_string:
                 if reduced_topic.lower() == t.lower():
@@ -106,7 +106,7 @@ def load_data_basiccleanup():
     if not df[df['TOPIC_MAIN'] == 'Other'].empty:
         raise Exception('TOPIC_MAIN is somewhere empty!!!')
 
-    ## Prepreprocessing Blurbs
+    ## Preprocessing Blurbs
     # Applying basic clean up to the blurbs.
     df['DESCRIPTION'] = df['DESCRIPTION'].fillna('').apply(clean_description)
     if (df['DESCRIPTION'].str.strip() == '').any():
