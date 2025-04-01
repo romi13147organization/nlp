@@ -114,6 +114,3 @@ def load_data_basiccleanup():
         df = df[df['DESCRIPTION'].str.strip() != '']
 
     return df[['TOPIC_MAIN', 'DESCRIPTION']]
-
-
-df = load_data_basiccleanup()
