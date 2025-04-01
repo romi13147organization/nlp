@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import re
 from unidecode import unidecode
+import os
 
 def read_xml(path_file):
     with open(path_file, 'r', encoding='utf-8') as file:
@@ -82,3 +83,34 @@ def clean_description(text):
     text = unidecode(text)
 
     return text
+
+
+def load_data_basiccleanup():
+    # Load XML files and create dataframe
+    PATH_DEV = os.path.join(os.getcwd(), 'origdata', 'BlurbGenreCollection_EN_dev.txt')
+    PATH_TEST = os.path.join(os.getcwd(), 'origdata', 'BlurbGenreCollection_EN_test.txt')
+    PATH_TRAIN = os.path.join(os.getcwd(), 'origdata', 'BlurbGenreCollection_EN_train.txt')
+    df = pd.concat([read_xml(PATH_TRAIN), read_xml(PATH_TEST), read_xml(PATH_DEV)]).reset_index(drop=True)
+
+    # Reduced topics - Sorted in ascending order by frequency of occurrence (lowest first)
+    reduced_topics_sorted = ['Poetry', 'Humor', 'Young Adult', 'Classics', 'Children’s Books', 'Fiction', 'Nonfiction']
+    df['TOPICS_SPLIT'] = df['TOPICS'].apply(lambda x: sorted(list(set(i.strip() for i in re.split(r'[,\s]{2,}', x)))))
+    def assign_primary_topic(topic_string):
+        # label will be the first match --> topic has a lower frequency of occurrence
+        for reduced_topic in reduced_topics_sorted:
+            for t in topic_string:
+                if reduced_topic.lower() in t.lower():
+                    return reduced_topic
+        return 'Others'
+    df['TOPIC_MAIN'] = df['TOPICS_SPLIT'].apply(assign_primary_topic)
+    if not df[df['TOPIC_MAIN'] == 'Other'].empty:
+        raise Exception('TOPIC_MAIN is somewhere empty!!!')
+
+    ## Preprocessing Blurbs
+    # Applying basic clean up to the blurbs.
+    df['DESCRIPTION'] = df['DESCRIPTION'].fillna('').apply(clean_description)
+    if (df['DESCRIPTION'].str.strip() == '').any():
+        print("Warning: One row was deleted, because 'DESCRIPTION' is empty.")
+        df = df[df['DESCRIPTION'].str.strip() != '']
+
+    return df[['TOPIC_MAIN', 'DESCRIPTION']]
