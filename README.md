@@ -1,4 +1,9 @@
 # NLP - Group 12
+
+Lorenz Flich - ai24m039  
+Romina Messner - ai24m026  
+Oliver Miniszewski - ai24m006
+
 ## Classifying/Clustering blobs from books
 
 ## How to start the project
@@ -15,12 +20,19 @@ pip install -r requirements.txt
 * set the `flag_load_backup` to `False` inside the [distilBERT-notebook](./data_classification_DistilBERT.ipynb)
 * install the [CUDA-Toolkit](https://developer.nvidia.com/cuda-12-6-0-download-archive) (matching your gpu - in our case 12.6)
 * install the matching https://pytorch.org/ version (in our case `pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126`)
-* else just download the model from our google drive: [link](https://drive.google.com/drive/folders/1fCoFBVs3e2MSVL8I9qOfv2CQcq54aRnb?usp=sharing) and place the `final_model` folder in the project root
+* else just download the model from our [Google Drive](https://drive.google.com/drive/folders/1fCoFBVs3e2MSVL8I9qOfv2CQcq54aRnb?usp=sharing) and place the `final_model` folder in the project root
+
+## Backupfiles
+
+Dumps of the models/data can be found in our [Google Drive](https://drive.google.com/drive/folders/1fCoFBVs3e2MSVL8I9qOfv2CQcq54aRnb?usp=sharing) \
+Download them and place them in the root of the project
+* `tokens.dat`: Dataframe + Tokenization using NLTK + Spacy ~ [data-classification_cml](./data_classification_cml.ipynb)
+* `final_model`: Folder - Containing trained model ~ [distilBERT](./data_classification_DistilBERT.ipynb)
 
 ## Project Structure
 The project is divided into 3 main jupyter notebooks:
 * [data-exploration](./data_exploration.ipynb)
-* [data-classification](./data_classification_cml.ipynb)
+* [data-classification_cml](./data_classification_cml.ipynb)
 * [distilBERT](./data_classification_DistilBERT.ipynb)
 
 ### Data Exploration
@@ -32,14 +44,14 @@ This [notebook](./data_exploration.ipynb) includes the Exploratory Data Analysis
 * Clustering Labels -> using KMeans, Agglomerative Clustering 
 * Comparing Tokenizers and Stopwords (NLTK vs. Spacy)
 
-### Data Classification
+### Data Classification - CML
 This [notebook](./data_classification_cml.ipynb) contains the following topics:
 * Preprocessing Data (Tokenization & StopWord removal)
 * Vectorization & Embeddings (TfidfVectorizer & Universal Sentence Encoder & Doc2Vec)
 * Using the models (TfidfVectorizer & Universal Sentence Encoder & Doc2Vec)
 * Evaluating model performance (classification report + confusion matrix)
 
-### DistillBERT
+### Data Classification - DistillBERT
 This [notebook](./data_classification_DistilBERT.ipynb) contains the following topics:
 * Tokenization (DistilBertTokenizerFast)
 * Setup of Train-Environment (GPU-Usage)
