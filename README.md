@@ -13,7 +13,7 @@ pip install -r requirements.txt
 6. (Optional) If you want to train the DistillBert model yourself the [CUDA-Toolkit](https://developer.nvidia.com/cuda-12-6-0-download-archive) is required in order to utilize the GPU for training.
 
 ## Project Structure
-The project is divided into 3 main jupyter notebooks
+The project is divided into 3 main jupyter notebooks:
 * [data-exploration](./data_exploration.ipynb)
 * [data-classification](./data_classification.ipynb)
 * [distilBERT](./distllbert-test.ipynb)
@@ -40,4 +40,4 @@ This [distilBERT](./distllbert-test.ipynb) contains the following topics:
 * Setup of Train-Environment (GPU-Usage)
 * Training the model (distilbert-base-uncased)
 * Evaluating the model (classification report + confusion matrix)
-* Test trained model on example blurb
+* Test trained model on example blurbs
