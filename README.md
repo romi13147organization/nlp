@@ -12,7 +12,7 @@
 pip install -r requirements.txt
 `````
 6. (Optional) if you want to train the DistillBert model yourself:
-* set the `flag_load_backup` to `False` inside the [distilBERT-notebook](./DistilBERT.ipynb)
+* set the `flag_load_backup` to `False` inside the [distilBERT-notebook](./data_classification_DistilBERT.ipynb)
 * install the [CUDA-Toolkit](https://developer.nvidia.com/cuda-12-6-0-download-archive) (matching your gpu - in our case 12.6)
 * install the matching https://pytorch.org/ version (in our case `pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126`)
 * else just download the model from our google drive: [link](https://drive.google.com/drive/folders/1fCoFBVs3e2MSVL8I9qOfv2CQcq54aRnb?usp=sharing) and place the `final_model` folder in the project root
@@ -21,7 +21,7 @@ pip install -r requirements.txt
 The project is divided into 3 main jupyter notebooks:
 * [data-exploration](./data_exploration.ipynb)
 * [data-classification](./data_classification_cml.ipynb)
-* [distilBERT](./DistilBERT.ipynb)
+* [distilBERT](./data_classification_DistilBERT.ipynb)
 
 ### Data Exploration
 This [notebook](./data_exploration.ipynb) includes the Exploratory Data Analysis and contains the following topics:
@@ -40,7 +40,7 @@ This [notebook](./data_classification_cml.ipynb) contains the following topics:
 * Evaluating model performance (classification report + confusion matrix)
 
 ### DistillBERT
-This [notebook](./DistilBERT.ipynb) contains the following topics:
+This [notebook](./data_classification_DistilBERT.ipynb) contains the following topics:
 * Tokenization (DistilBertTokenizerFast)
 * Setup of Train-Environment (GPU-Usage)
 * Training the model (distilbert-base-uncased)
