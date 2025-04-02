@@ -40,7 +40,7 @@ This [notebook](./data_classification_cml.ipynb) contains the following topics:
 * Evaluating model performance (classification report + confusion matrix)
 
 ### DistillBERT
-This [DistilBERT](./DistilBERT.ipynb) contains the following topics:
+This [notebook](./DistilBERT.ipynb) contains the following topics:
 * Tokenization (DistilBertTokenizerFast)
 * Setup of Train-Environment (GPU-Usage)
 * Training the model (distilbert-base-uncased)
