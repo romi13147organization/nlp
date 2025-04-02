@@ -16,7 +16,7 @@ pip install -r requirements.txt
 The project is divided into 3 main jupyter notebooks:
 * [data-exploration](./data_exploration.ipynb)
 * [data-classification](./data_classification.ipynb)
-* [distilBERT](./distllbert-test.ipynb)
+* [distilBERT](./DistilBERT.ipynb)
 
 ### Data Exploration
 This [notebook](./data_exploration.ipynb) includes the Exploratory Data Analysis and contains the following topics:
@@ -35,7 +35,7 @@ This [notebook](./data_classification.ipynb) contains the following topics:
 * Evaluating model performance (classification report + confusion matrix)
 
 ### DistillBERT
-This [distilBERT](./distllbert-test.ipynb) contains the following topics:
+This [DistilBERT](./DistilBERT.ipynb) contains the following topics:
 * Tokenization (DistilBertTokenizerFast)
 * Setup of Train-Environment (GPU-Usage)
 * Training the model (distilbert-base-uncased)
