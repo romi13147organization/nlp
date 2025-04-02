@@ -2,7 +2,7 @@
 ## Classifying/Clustering blobs from books
 
 ## How to start the project
-0. Use Python Version `3.10.13`
+0. Use Python Version `3.10.16`
 1. Download Data: https://fiona.uni-hamburg.de/ca89b3cf/blurbgenrecollectionen.zip
 2. Unzip the data
 3. Create folder "origdata" in the root of the project
