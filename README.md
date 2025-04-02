@@ -2,6 +2,7 @@
 ## Classifying/Clustering blobs from books
 
 ## How to start the project
+0. Use Python Version `3.10.13`
 1. Download Data: https://fiona.uni-hamburg.de/ca89b3cf/blurbgenrecollectionen.zip
 2. Unzip the data
 3. Create folder "origdata" in the root of the project
@@ -10,12 +11,14 @@
 `````bash
 pip install -r requirements.txt
 `````
-6. (Optional) If you want to train the DistillBert model yourself the [CUDA-Toolkit](https://developer.nvidia.com/cuda-12-6-0-download-archive) is required in order to utilize the GPU for training.
+6. (Optional) if you want to train the DistillBert model yourself:
+* install the [CUDA-Toolkit](https://developer.nvidia.com/cuda-12-6-0-download-archive) (matching your gpu - in our case 12.6)
+* install the matching https://pytorch.org/ version (in our case `pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126`)
 
 ## Project Structure
 The project is divided into 3 main jupyter notebooks:
 * [data-exploration](./data_exploration.ipynb)
-* [data-classification](./data_classification.ipynb)
+* [data-classification](./data_classification_cml.ipynb)
 * [distilBERT](./DistilBERT.ipynb)
 
 ### Data Exploration
@@ -28,7 +31,7 @@ This [notebook](./data_exploration.ipynb) includes the Exploratory Data Analysis
 * Comparing Tokenizers and Stopwords (NLTK vs. Spacy)
 
 ### Data Classification
-This [notebook](./data_classification.ipynb) contains the following topics:
+This [notebook](./data_classification_cml.ipynb) contains the following topics:
 * Preprocessing Data (Tokenization & StopWord removal)
 * Vectorization & Embeddings (TfidfVectorizer & Universal Sentence Encoder & Doc2Vec)
 * Using the models (TfidfVectorizer & Universal Sentence Encoder & Doc2Vec)

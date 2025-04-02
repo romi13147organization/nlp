@@ -85,7 +85,7 @@ def clean_description(text):
     return text
 
 
-def load_data_basiccleanup():
+def load_data_basic_cleanup():
     # Load XML files and create dataframe
     PATH_DEV = os.path.join(os.getcwd(), 'origdata', 'BlurbGenreCollection_EN_dev.txt')
     PATH_TEST = os.path.join(os.getcwd(), 'origdata', 'BlurbGenreCollection_EN_test.txt')
@@ -99,7 +99,7 @@ def load_data_basiccleanup():
         # label will be the first match --> topic has a lower frequency of occurrence
         for reduced_topic in reduced_topics_sorted:
             for t in topic_string:
-                if reduced_topic.lower() in t.lower():
+                if reduced_topic.lower() == t.lower():
                     return reduced_topic
         return 'Others'
     df['TOPIC_MAIN'] = df['TOPICS_SPLIT'].apply(assign_primary_topic)
